@@ -1,31 +1,31 @@
 import { useContext, useRef } from 'react';
 import { SmartContext } from '../Core/SmartContext';
 import { getControlValueFromState, handleControlValueChange } from '../Core/SmartFunctions';
-import { FormControl } from '../Core/SmartTypes';
+import { SimpleFormControlArguments } from '../Core/SmartTypes';
 
-const TextControl = (config: FormControl, dataKey: string) => {
+const TextControl = (args: SimpleFormControlArguments) => {
     const { state, dispatch } = useContext(SmartContext);
-    const data = getControlValueFromState(dataKey, state?.data);
+    const data = getControlValueFromState(args.dataKey, state?.data);
     const formControlRef = useRef(null); // Note: For providing reference to ErrorControl
 
     return (
-        <div className={`has-validation col-${config.width}`}>
-            <label htmlFor={config.id} className='form-label'>
-                {`${config.props.label} ${config.props.required ? '*' : ''}`}
+        <div className={`has-validation col-${args.control.width}`}>
+            <label htmlFor={args.control.id} className='form-label'>
+                {`${args.control.props.label} ${args.control.props.required ? '*' : ''}`}
             </label>
             <input
-                type={config.type}
+                type={args.control.type}
                 className={`form-control`}
-                id={config.id}
-                placeholder={config.props.placeholder}
-                inputMode={config.props.inputMode}
+                id={args.control.id}
+                placeholder={args.control.props.placeholder}
+                inputMode={args.control.props.inputMode}
                 value={data}
-                required={config.props.required}
-                onChange={(event) => handleControlValueChange(config.id, event.target.value, dispatch)}
-                minLength={config.props.minLength}
-                maxLength={config.props.maxLength}
-                min={config.props.min}
-                max={config.props.max}
+                required={args.control.props.required}
+                onChange={(event) => handleControlValueChange(args.control.id, event.target.value, args.dataKey, dispatch)}
+                minLength={args.control.props.minLength}
+                maxLength={args.control.props.maxLength}
+                min={args.control.props.min}
+                max={args.control.props.max}
                 ref={formControlRef}
             />
         </div>

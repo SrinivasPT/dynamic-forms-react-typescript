@@ -1,5 +1,6 @@
 export type Page = {
     title: string;
+    urlPath: string;
     sections: string[];
     sectionRepository: FormSection[];
 };
@@ -39,29 +40,61 @@ export type ControlProperties = {
 
 export type ApplicationContext = {
     state: State | null;
-    dispatch: (dispatchEvent: DispatchEvent) => {};
+    dispatch: (dispatchEvent: DispatchEvent) => void;
 };
 
 export type State = {
-    formConfig: Page;
-    data: any;
-    domain: Domain;
+    formConfig?: Page;
+    data?: any;
+    domain?: Domain;
+    flags: StateFlags;
+};
+
+export type StateFlags = {
+    isDataLoading: boolean;
 };
 
 export type DomainElement = {
+    categoryCode: string;
     code: string;
     value: string;
+    parentCode: string;
 };
 
 export type Domain = Map<string, DomainElement>;
 
 export type DispatchEvent = {
     type: string;
-    payload: ControlValueChange | any;
+    payload?: ControlValueChange | FormDataFromDBReceived | any;
 };
 
 export type ControlValueChange = {
     dataKey: string;
     name: string;
     value: any;
+};
+
+export type FormDataFromDBReceived = {
+    config: Page;
+    data: any;
+    domain: DomainElement[];
+};
+
+export type PageBuilderArguments = {
+    pageName: string;
+    id: number;
+};
+
+export type FormBuilderArguments = {
+    section: FormSection;
+    dataKey: string;
+};
+
+export type SimpleFormControlArguments = {
+    control: FormControl;
+    dataKey: string;
+};
+
+export type ObjectWithKeys = {
+    [key: string]: string | number | ObjectWithKeys;
 };
