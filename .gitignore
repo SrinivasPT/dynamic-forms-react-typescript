@@ -30,3 +30,6 @@ b.htm
 b.html
 b.json
 b.txt
+/test-results/
+/playwright-report/
+/playwright/.cache/

@@ -1,11 +1,11 @@
 import { useContext, useRef } from 'react';
 import { SmartContext } from '../Core/SmartContext';
 import { getControlValueFromState, handleControlValueChange } from '../Core/SmartFunctions';
-import { SimpleFormControlArguments } from '../Core/SmartTypes';
+import { SimpleFormControlArguments, State } from '../Core/SmartTypes';
 
 const TextControl = (args: SimpleFormControlArguments) => {
     const { state, dispatch } = useContext(SmartContext);
-    const data = getControlValueFromState(args.dataKey, state?.data);
+    const data = getControlValueFromState(args.dataKey, state as State);
     const formControlRef = useRef(null); // Note: For providing reference to ErrorControl
 
     return (

@@ -40,7 +40,7 @@ const PageBuilder = (args: PageBuilderArguments) => {
             {state?.flags.isDataLoading && <div>Loading...</div>}
             {/* TODO: Error display condition to be added*/}
             {!state?.flags.isDataLoading && (
-                <form className='needs-validation' noValidate onSubmit={handleSubmit}>
+                <form className='needs-validation m-3' noValidate onSubmit={handleSubmit}>
                     {state?.formConfig?.sections.map((section) => (
                         <FormBuilder
                             key={section}

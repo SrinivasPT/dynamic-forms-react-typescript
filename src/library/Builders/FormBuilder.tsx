@@ -18,7 +18,7 @@ const FormBuilder = (args: FormBuilderArguments) => {
                 element = <TextControl control={control} dataKey={childDataKey} />;
                 break;
             case 'SMART':
-                element = <FormBuilder section={getSectionConfig(control.id) as FormSection} dataKey={control.id} />;
+                element = <FormBuilder section={getSectionConfig(control.id) as FormSection} dataKey={childDataKey} />;
                 break;
             default:
                 throw new Error();

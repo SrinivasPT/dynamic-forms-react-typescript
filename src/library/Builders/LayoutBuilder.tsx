@@ -11,7 +11,7 @@ const LayoutBuilder = (args: LayoutArguments) => {
         }
     };
 
-    return <div className=''>{<>{getLayout()}</>}</div>;
+    return <div className='mb-2'>{<>{getLayout()}</>}</div>;
 };
 
 export default LayoutBuilder;
