@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 export type Page = {
     title: string;
     urlPath: string;
@@ -97,4 +99,9 @@ export type SimpleFormControlArguments = {
 
 export type ObjectWithKeys = {
     [key: string]: string | number | ObjectWithKeys;
+};
+
+export type LayoutArguments = {
+    section: FormSection;
+    component: ReactNode;
 };
