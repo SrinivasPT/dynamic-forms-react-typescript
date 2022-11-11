@@ -14,9 +14,10 @@ const TextControl = (args: SimpleFormControlArguments) => {
                 {`${args.control.props.label} ${args.control.props.required ? '*' : ''}`}
             </label>
             <input
+                id={args.control.id}
+                data-testid={args.control.id}
                 type={args.control.type}
                 className={`form-control`}
-                id={args.control.id}
                 placeholder={args.control.props.placeholder}
                 inputMode={args.control.props.inputMode}
                 value={data}

@@ -25,8 +25,10 @@ const PageBuilder = (args: PageBuilderArguments) => {
     };
 
     const handleSubmit = (event: React.SyntheticEvent) => {
+        const URL_FOR_FORM_DATA = `http://localhost:3007/${args.pageName}/${args.id}`;
         event.preventDefault();
         console.log(state?.data);
+        axios.put(URL_FOR_FORM_DATA, state?.data);
     };
 
     useEffect(() => {
