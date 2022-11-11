@@ -9,7 +9,7 @@ const TextControl = (args: SimpleFormControlArguments) => {
     const formControlRef = useRef(null); // Note: For providing reference to ErrorControl
 
     return (
-        <div className={`has-validation col-${args.control.width}`}>
+        <>
             <label htmlFor={args.control.id} className='form-label'>
                 {`${args.control.props.label} ${args.control.props.required ? '*' : ''}`}
             </label>
@@ -28,7 +28,7 @@ const TextControl = (args: SimpleFormControlArguments) => {
                 max={args.control.props.max}
                 ref={formControlRef}
             />
-        </div>
+        </>
     );
 };
 

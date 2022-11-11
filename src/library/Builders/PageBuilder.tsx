@@ -49,7 +49,7 @@ const PageBuilder = (args: PageBuilderArguments) => {
                         />
                     ))}
 
-                    <button type='submit' className='btn btn-primary'>
+                    <button type='submit' className='btn btn-primary m-3'>
                         Submit
                     </button>
                 </form>

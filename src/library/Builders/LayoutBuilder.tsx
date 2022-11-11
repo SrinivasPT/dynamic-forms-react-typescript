@@ -5,13 +5,13 @@ const LayoutBuilder = (args: LayoutArguments) => {
     const getLayout = () => {
         switch (args.section.type) {
             case 'SECTION_WITH_HEADER':
-                return <CardLayout key={args.section.id} section={args.section} component={args.component} />;
+                return <CardLayout section={args.section} component={args.component} />;
             default:
                 return new Error();
         }
     };
 
-    return <>{getLayout()}</>;
+    return <div className=''>{<>{getLayout()}</>}</div>;
 };
 
 export default LayoutBuilder;

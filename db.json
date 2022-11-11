@@ -4,7 +4,7 @@
             "id": "STUDENT",
             "title": "Student Information",
             "urlPath": "STUDENT",
-            "sections": ["details", "address"],
+            "sections": ["details"],
             "sectionRepository": [
                 {
                     "id": "details",
@@ -14,20 +14,25 @@
                         {
                             "id": "id",
                             "type": "TEXT",
-                            "width": 3,
+                            "className": "col-md-4 col-sm-6",
                             "props": { "label": "ID" }
                         },
                         {
                             "id": "firstName",
                             "type": "TEXT",
-                            "width": 3,
+                            "className": "col-md-4 col-sm-6",
                             "props": { "label": "First Name" }
                         },
                         {
                             "id": "lastName",
                             "type": "TEXT",
-                            "width": 3,
+                            "className": "col-md-4 col-sm-6",
                             "props": { "label": "Last Name" }
+                        },
+                        {
+                            "id": "address",
+                            "type": "SMART",
+                            "className": "col-md-12 col-sm-12"
                         }
                     ]
                 },
@@ -39,31 +44,31 @@
                         {
                             "id": "addressLine1",
                             "type": "TEXT",
-                            "width": 3,
+                            "className": "col-md-4 col-sm-6",
                             "props": { "label": "Address Line 1" }
                         },
                         {
                             "id": "addressLine2",
                             "type": "TEXT",
-                            "width": 3,
+                            "className": "col-md-4 col-sm-6",
                             "props": { "label": "Address Line 2" }
                         },
                         {
                             "id": "cityCode",
                             "type": "TEXT",
-                            "width": 3,
+                            "className": "col-md-4 col-sm-6",
                             "props": { "label": "City" }
                         },
                         {
                             "id": "stateCode",
                             "type": "TEXT",
-                            "width": 3,
+                            "className": "col-md-4 col-sm-6",
                             "props": { "label": "State" }
                         },
                         {
                             "id": "countryCode",
                             "type": "TEXT",
-                            "width": 3,
+                            "className": "col-md-4 col-sm-6",
                             "props": { "label": "Country" }
                         }
                     ]
@@ -77,14 +82,14 @@
             "details": {
                 "id": 1000,
                 "firstName": "John",
-                "lastName": "Doe"
-            },
-            "address": {
-                "addressLine1": "A 108, Lake Front",
-                "addressLine2": "Central London",
-                "cityCode": "LONDON",
-                "stateCode": "LONDON",
-                "countryCode": "UK"
+                "lastName": "Doe",
+                "address": {
+                    "addressLine1": "A 108, Lake Front",
+                    "addressLine2": "Central London",
+                    "cityCode": "LONDON",
+                    "stateCode": "LONDON",
+                    "countryCode": "UK"
+                }
             }
         }
     ],
