@@ -1,8 +1,7 @@
-import { Page, test } from '@playwright/test';
-import { PageObject } from './page';
+import { test } from '@playwright/test';
+import { PageObject } from '../../library/PageObject';
 
 test.describe('Student Test', () => {
-    let page: Page;
     let pageObject: PageObject;
 
     test.beforeEach(async ({ page }) => {

@@ -1,6 +1,6 @@
 import { Page } from '@playwright/test';
-import { loadConfigAndData } from './library/Database';
-import { PageConfig } from './library/SmartTypes';
+import { loadConfigAndData } from './Database';
+import { FormControl, PageConfig } from './SmartTypes';
 
 export class PageObject {
     config: PageConfig;
@@ -15,8 +15,9 @@ export class PageObject {
 
     fillSection = async (sectionName: string, page: Page) => {
         const sectionConfig = this.config.sectionRepository.find((formSection) => formSection.id === sectionName);
-        await sectionConfig?.controlGroup.map((element) => {
-            if (element.type === 'TEXT') page.getByTestId(element.id).fill('Hello');
-        });
+
+        for (const element of sectionConfig?.controlGroup as FormControl[]) {
+            if (element.type === 'TEXT') await page.getByTestId(element.id).fill('Hello');
+        }
     };
 }
