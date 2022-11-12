@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import TableControl from '../ComplexControls/TableControl';
 import { SmartContext } from '../Core/SmartContext';
 import { FormBuilderArguments, FormControl, FormSection } from '../Core/SmartTypes';
 import TextControl from '../SimpleControls/TextControl';
@@ -6,9 +7,10 @@ import LayoutBuilder from './LayoutBuilder';
 
 const FormBuilder = (args: FormBuilderArguments) => {
     const { state } = useContext(SmartContext);
+    const { section, dataKey } = args;
 
     const getControl = (control: FormControl) => {
-        const childDataKey = args.dataKey + '.' + control.id;
+        const childDataKey = dataKey + '.' + control.id;
         let element;
         const getSectionConfig = (sectionName: string) =>
             state?.formConfig?.sectionRepository.find((section) => section.id === sectionName);
@@ -16,6 +18,9 @@ const FormBuilder = (args: FormBuilderArguments) => {
         switch (control.type) {
             case 'TEXT':
                 element = <TextControl control={control} dataKey={childDataKey} />;
+                break;
+            case 'TABLE':
+                element = <TableControl control={control} dataKey={dataKey} />;
                 break;
             case 'SMART':
                 element = <FormBuilder section={getSectionConfig(control.id) as FormSection} dataKey={childDataKey} />;
@@ -31,7 +36,7 @@ const FormBuilder = (args: FormBuilderArguments) => {
         );
     };
 
-    return <LayoutBuilder section={args.section} component={<>{args.section.controlGroup.map((control) => getControl(control))}</>} />;
+    return <LayoutBuilder section={section} component={<>{section.controlGroup.map((control) => getControl(control))}</>} />;
 };
 
 export default FormBuilder;

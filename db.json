@@ -5,7 +5,8 @@
       "title": "Student Information",
       "urlPath": "STUDENT",
       "sections": [
-        "details"
+        "details",
+        "education"
       ],
       "sectionRepository": [
         {
@@ -82,6 +83,44 @@
               }
             }
           ]
+        },
+        {
+          "id": "education",
+          "title": "Education History",
+          "type": "SECTION_WITH_HEADER",
+          "controlGroup": [
+            {
+              "id": "education",
+              "type": "TABLE",
+              "className": "col-md-12 col-sm-12",
+              "props": {
+                "gridOptions": {
+                  "columnDefs": [
+                    {
+                      "id": "class",
+                      "label": "Class",
+                      "width": 2
+                    },
+                    {
+                      "id": "school",
+                      "label": "School",
+                      "width": 6
+                    },
+                    {
+                      "id": "year",
+                      "label": "Year",
+                      "width": 2
+                    },
+                    {
+                      "id": "grade",
+                      "label": "Grade",
+                      "width": 2
+                    }
+                  ]
+                }
+              }
+            }
+          ]
         }
       ]
     }
@@ -100,7 +139,27 @@
           "stateCode": "LONDON",
           "countryCode": "UK"
         }
-      }
+      },
+      "education": [
+        {
+          "class": "7TH_CLASS",
+          "school": "CHAITANYA_SCHOOL",
+          "year": 2010,
+          "grade": "A"
+        },
+        {
+          "class": "8TH_CLASS",
+          "school": "CHAITANYA_SCHOOL",
+          "year": 2011,
+          "grade": "B"
+        },
+        {
+          "class": "9TH_CLASS",
+          "school": "DPS_SCHOOL",
+          "year": 2011,
+          "grade": "C"
+        }
+      ]
     }
   ],
   "DOMAIN": [

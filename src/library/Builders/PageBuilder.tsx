@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useContext, useEffect } from 'react';
+import { addInternalWorkAreaToConfig } from '../Core/FormConfig';
 import { SmartContext } from '../Core/SmartContext';
 import { convertDomainArrayToMap } from '../Core/SmartFunctions';
 import { FormSection, PageBuilderArguments } from '../Core/SmartTypes';
@@ -19,7 +20,12 @@ const PageBuilder = (args: PageBuilderArguments) => {
         Promise.all([axios.get(URL_FOR_CONFIG), axios.get(URL_FOR_FORM_DATA), axios.get(URL_FOR_DOMAIN_DATA)]).then((values) => {
             dispatch({
                 type: 'FETCH_PAGE_DATA_END',
-                payload: { config: values[0].data, data: values[1].data, domain: convertDomainArrayToMap(values[2].data) },
+                payload: {
+                    config: values[0].data,
+                    data: values[1].data,
+                    domain: convertDomainArrayToMap(values[2].data),
+                    internal: addInternalWorkAreaToConfig(values[0].data),
+                },
             });
         });
     };
@@ -28,6 +34,7 @@ const PageBuilder = (args: PageBuilderArguments) => {
         const URL_FOR_FORM_DATA = `http://localhost:3007/${args.pageName}/${args.id}`;
         event.preventDefault();
         console.log(state?.data);
+        console.log(state);
         axios.put(URL_FOR_FORM_DATA, state?.data);
     };
 

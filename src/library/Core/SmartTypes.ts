@@ -38,6 +38,17 @@ export type ControlProperties = {
     pattern?: string | RegExp;
     required?: boolean;
     readonly?: boolean;
+    gridOptions: GridOptions;
+};
+
+export type GridOptions = {
+    columnDefs: ColumnDefs[];
+};
+
+export type ColumnDefs = {
+    id: string;
+    label: string;
+    width: number;
 };
 
 export type ApplicationContext = {
@@ -50,6 +61,11 @@ export type State = {
     data?: any;
     domain?: Domain;
     flags: StateFlags;
+    internal: InternalState;
+};
+
+export type InternalState = {
+    tableSearchCriteria: {};
 };
 
 export type StateFlags = {
@@ -67,13 +83,19 @@ export type Domain = Map<string, DomainElement>;
 
 export type DispatchEvent = {
     type: string;
-    payload?: ControlValueChange | FormDataFromDBReceived | any;
+    payload?: ControlValueChange | FormDataFromDBReceived | TableSearchCriteriaChange | any;
 };
 
 export type ControlValueChange = {
     dataKey: string;
     name: string;
     value: any;
+};
+
+export type TableSearchCriteriaChange = {
+    tableName: string;
+    id: string;
+    value: String;
 };
 
 export type FormDataFromDBReceived = {
