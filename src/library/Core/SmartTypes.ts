@@ -65,7 +65,7 @@ export type State = {
 };
 
 export type InternalState = {
-    tableSearchCriteria: {};
+    tableSearchCriteria: ObjectWithKeys;
 };
 
 export type StateFlags = {
@@ -83,7 +83,7 @@ export type Domain = Map<string, DomainElement>;
 
 export type DispatchEvent = {
     type: string;
-    payload?: ControlValueChange | FormDataFromDBReceived | TableSearchCriteriaChange | any;
+    payload?: ControlValueChange | FormDataFromDBReceived | TableSearchCriteriaChange | TableOriginalDataSet | any;
 };
 
 export type ControlValueChange = {
@@ -96,6 +96,11 @@ export type TableSearchCriteriaChange = {
     tableName: string;
     id: string;
     value: String;
+};
+
+export type TableOriginalDataSet = {
+    tableName: string;
+    data: any;
 };
 
 export type FormDataFromDBReceived = {

@@ -24,11 +24,16 @@ const smartReducer = (state: State, action: DispatchEvent) => {
             }
             break;
 
-        case 'TABLE_SEARCH_CRITERIA_VALUE_CHANGE':
-            const searchCriteriaNode: ObjectWithKeys = state.internal.tableSearchCriteria;
-            const tableNode: ObjectWithKeys = searchCriteriaNode[action.payload.tableName] as ObjectWithKeys;
-            tableNode[action.payload.id] = action.payload.value;
-            break;
+        // case 'TABLE_SEARCH_CRITERIA_VALUE_CHANGE':
+        //     const searchCriteriaNode: ObjectWithKeys = state.internal.tableSearchCriteria;
+        //     const tableNode: ObjectWithKeys = searchCriteriaNode[action.payload.tableName] as ObjectWithKeys;
+        //     tableNode[action.payload.id] = action.payload.value;
+        //     break;
+
+        // case 'TABLE_ORIGINAL_DATA_SET':
+        //     const tableOriginalDataNode: ObjectWithKeys = state.internal.tableOriginalData;
+        //     tableOriginalDataNode[action.payload.tableName] = action.payload.data;
+        //     break;
 
         default:
             throw new Error();

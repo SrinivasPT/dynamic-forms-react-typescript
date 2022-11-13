@@ -1,16 +1,25 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { SmartContext } from '../Core/SmartContext';
-import { getControlValueFromState, isEmpty } from '../Core/SmartFunctions';
+import { getControlValueFromState } from '../Core/SmartFunctions';
 import { SimpleFormControlArguments, State } from '../Core/SmartTypes';
+import { filter, getSearchCriteriaShape, gridInSearchMode } from '../Service/GridService';
 
 const TableControl = (args: SimpleFormControlArguments) => {
-    const { state, dispatch } = useContext(SmartContext);
+    const { state } = useContext(SmartContext);
     const { control, dataKey } = args;
     let data = getControlValueFromState(args.dataKey, state as State);
-    data = isEmpty(data) ? [] : data;
+    const [filteredData, setFilteredData] = useState([...data]);
+    const [searchCriteria, setSearchCriteria] = useState(getSearchCriteriaShape(control));
+    let newFilteredData = filteredData;
 
-    const handleChange = (tableName: string, id: string, value: string) => {
-        dispatch({ type: 'TABLE_SEARCH_CRITERIA_VALUE_CHANGE', payload: { tableName, id, value } });
+    const handleChange = (id: string, value: string) => {
+        const newSearchCriteria = { ...searchCriteria, [id]: value };
+        setSearchCriteria(newSearchCriteria);
+        if (gridInSearchMode(newSearchCriteria)) setFilteredData(filter([...data], newSearchCriteria));
+        else {
+            newFilteredData = [...data];
+            setFilteredData(newFilteredData);
+        }
     };
 
     const getHeader = () => {
@@ -29,7 +38,7 @@ const TableControl = (args: SimpleFormControlArguments) => {
                             <input
                                 id={column.id}
                                 className='border border-1 col-12'
-                                onChange={(event) => handleChange(control.id, column.id, event.target.value)}
+                                onChange={(event) => handleChange(column.id, event.target.value)}
                             />
                         </th>
                     ))}
@@ -41,7 +50,7 @@ const TableControl = (args: SimpleFormControlArguments) => {
     const getBody = () => {
         return (
             <tbody>
-                {data.map((row: any, rowIndex: number) => (
+                {newFilteredData.map((row: any, rowIndex: number) => (
                     <tr key={dataKey + rowIndex}>
                         {control['props']['gridOptions']['columnDefs'].map((column, colIndex) => (
                             <td key={dataKey + rowIndex + colIndex}>{row[column.id]}</td>

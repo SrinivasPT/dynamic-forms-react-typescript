@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { useContext, useEffect } from 'react';
-import { addInternalWorkAreaToConfig } from '../Core/FormConfig';
 import { SmartContext } from '../Core/SmartContext';
 import { convertDomainArrayToMap } from '../Core/SmartFunctions';
 import { FormSection, PageBuilderArguments } from '../Core/SmartTypes';
@@ -24,7 +23,7 @@ const PageBuilder = (args: PageBuilderArguments) => {
                     config: values[0].data,
                     data: values[1].data,
                     domain: convertDomainArrayToMap(values[2].data),
-                    internal: addInternalWorkAreaToConfig(values[0].data),
+                    internal: {},
                 },
             });
         });
