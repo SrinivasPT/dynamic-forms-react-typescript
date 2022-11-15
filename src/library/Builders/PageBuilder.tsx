@@ -23,7 +23,7 @@ const PageBuilder = (args: PageBuilderArguments) => {
                     config: values[0].data,
                     data: values[1].data,
                     domain: convertDomainArrayToMap(values[2].data),
-                    internal: {},
+                    internal: { gridState: [] },
                 },
             });
         });

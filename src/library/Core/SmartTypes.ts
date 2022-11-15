@@ -43,6 +43,7 @@ export type ControlProperties = {
 
 export type GridOptions = {
     columnDefs: ColumnDefs[];
+    pageSize: number;
 };
 
 export type ColumnDefs = {
@@ -65,7 +66,15 @@ export type State = {
 };
 
 export type InternalState = {
-    tableSearchCriteria: ObjectWithKeys;
+    gridState: GridInternalData[];
+};
+
+export type GridInternalData = {
+    id: string;
+    searchCriteria: any;
+    currentPage: number;
+    filteredData: any[];
+    pageData: any[];
 };
 
 export type StateFlags = {
@@ -93,9 +102,11 @@ export type ControlValueChange = {
 };
 
 export type TableSearchCriteriaChange = {
-    tableName: string;
     id: string;
     value: String;
+    tableName: string;
+    originalData: any[];
+    control: FormControl;
 };
 
 export type TableOriginalDataSet = {
@@ -117,6 +128,12 @@ export type PageBuilderArguments = {
 export type FormBuilderArguments = {
     section: FormSection;
     dataKey: string;
+};
+
+export type PaginationArguments = {
+    data: any[];
+    pageSize: number;
+    onPageChange: (pageNumber: number) => void;
 };
 
 export type SimpleFormControlArguments = {

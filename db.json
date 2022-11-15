@@ -1,287 +1,285 @@
 {
-  "CONFIG": [
-    {
-      "id": "STUDENT",
-      "title": "Student Information",
-      "urlPath": "STUDENT",
-      "sections": [
-        "details",
-        "education"
-      ],
-      "sectionRepository": [
+    "CONFIG": [
         {
-          "id": "details",
-          "title": "Student Details",
-          "type": "SECTION_WITH_HEADER",
-          "controlGroup": [
-            {
-              "id": "firstName",
-              "type": "TEXT",
-              "className": "col-md-4 col-sm-6",
-              "props": {
-                "label": "First Name"
-              }
-            },
-            {
-              "id": "lastName",
-              "type": "TEXT",
-              "className": "col-md-4 col-sm-6",
-              "props": {
-                "label": "Last Name"
-              }
-            },
-            {
-              "id": "address",
-              "type": "SMART",
-              "className": "col-md-12 col-sm-12"
-            }
-          ]
-        },
-        {
-          "id": "address",
-          "title": "Communication Address",
-          "type": "SECTION_WITH_HEADER",
-          "controlGroup": [
-            {
-              "id": "addressLine1",
-              "type": "TEXT",
-              "className": "col-md-4 col-sm-6",
-              "props": {
-                "label": "Address Line 1"
-              }
-            },
-            {
-              "id": "addressLine2",
-              "type": "TEXT",
-              "className": "col-md-4 col-sm-6",
-              "props": {
-                "label": "Address Line 2"
-              }
-            },
-            {
-              "id": "cityCode",
-              "type": "TEXT",
-              "className": "col-md-4 col-sm-6",
-              "props": {
-                "label": "City"
-              }
-            },
-            {
-              "id": "stateCode",
-              "type": "TEXT",
-              "className": "col-md-4 col-sm-6",
-              "props": {
-                "label": "State"
-              }
-            },
-            {
-              "id": "countryCode",
-              "type": "TEXT",
-              "className": "col-md-4 col-sm-6",
-              "props": {
-                "label": "Country"
-              }
-            }
-          ]
-        },
-        {
-          "id": "education",
-          "title": "Education History",
-          "type": "SECTION_WITH_HEADER",
-          "controlGroup": [
-            {
-              "id": "education",
-              "type": "TABLE",
-              "className": "col-md-12 col-sm-12",
-              "props": {
-                "gridOptions": {
-                  "columnDefs": [
-                    {
-                      "id": "class",
-                      "label": "Class",
-                      "width": 2
-                    },
-                    {
-                      "id": "school",
-                      "label": "School",
-                      "width": 6
-                    },
-                    {
-                      "id": "year",
-                      "label": "Year",
-                      "width": 2
-                    },
-                    {
-                      "id": "grade",
-                      "label": "Grade",
-                      "width": 2
-                    }
-                  ]
+            "id": "STUDENT",
+            "title": "Student Information",
+            "urlPath": "STUDENT",
+            "sections": ["details", "education"],
+            "sectionRepository": [
+                {
+                    "id": "details",
+                    "title": "Student Details",
+                    "type": "SECTION_WITH_HEADER",
+                    "controlGroup": [
+                        {
+                            "id": "firstName",
+                            "type": "TEXT",
+                            "className": "col-md-4 col-sm-6",
+                            "props": {
+                                "label": "First Name"
+                            }
+                        },
+                        {
+                            "id": "lastName",
+                            "type": "TEXT",
+                            "className": "col-md-4 col-sm-6",
+                            "props": {
+                                "label": "Last Name"
+                            }
+                        },
+                        {
+                            "id": "address",
+                            "type": "SMART",
+                            "className": "col-md-12 col-sm-12"
+                        }
+                    ]
+                },
+                {
+                    "id": "address",
+                    "title": "Communication Address",
+                    "type": "SECTION_WITH_HEADER",
+                    "controlGroup": [
+                        {
+                            "id": "addressLine1",
+                            "type": "TEXT",
+                            "className": "col-md-4 col-sm-6",
+                            "props": {
+                                "label": "Address Line 1"
+                            }
+                        },
+                        {
+                            "id": "addressLine2",
+                            "type": "TEXT",
+                            "className": "col-md-4 col-sm-6",
+                            "props": {
+                                "label": "Address Line 2"
+                            }
+                        },
+                        {
+                            "id": "cityCode",
+                            "type": "TEXT",
+                            "className": "col-md-4 col-sm-6",
+                            "props": {
+                                "label": "City"
+                            }
+                        },
+                        {
+                            "id": "stateCode",
+                            "type": "TEXT",
+                            "className": "col-md-4 col-sm-6",
+                            "props": {
+                                "label": "State"
+                            }
+                        },
+                        {
+                            "id": "countryCode",
+                            "type": "TEXT",
+                            "className": "col-md-4 col-sm-6",
+                            "props": {
+                                "label": "Country"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "education",
+                    "title": "Education History",
+                    "type": "SECTION_WITH_HEADER",
+                    "controlGroup": [
+                        {
+                            "id": "education",
+                            "type": "TABLE",
+                            "className": "col-md-12 col-sm-12",
+                            "props": {
+                                "gridOptions": {
+                                    "columnDefs": [
+                                        {
+                                            "id": "class",
+                                            "label": "Class",
+                                            "width": 2
+                                        },
+                                        {
+                                            "id": "school",
+                                            "label": "School",
+                                            "width": 6
+                                        },
+                                        {
+                                            "id": "year",
+                                            "label": "Year",
+                                            "width": 2
+                                        },
+                                        {
+                                            "id": "grade",
+                                            "label": "Grade",
+                                            "width": 2
+                                        }
+                                    ],
+                                    "pageSize": 2
+                                }
+                            }
+                        }
+                    ]
                 }
-              }
-            }
-          ]
+            ]
         }
-      ]
-    }
-  ],
-  "STUDENT": [
-    {
-      "id": 1000,
-      "details": {
-        "id": 1000,
-        "firstName": "Hello",
-        "lastName": "Hello",
-        "address": {
-          "addressLine1": "A 108, Lake Front",
-          "addressLine2": "Central London",
-          "cityCode": "LONDON",
-          "stateCode": "LONDON",
-          "countryCode": "UK"
-        }
-      },
-      "education": [
+    ],
+    "STUDENT": [
         {
-          "class": "7TH_CLASS",
-          "school": "CHAITANYA_SCHOOL",
-          "year": 2010,
-          "grade": "A"
+            "id": 1000,
+            "details": {
+                "id": 1000,
+                "firstName": "Hello",
+                "lastName": "Hello",
+                "address": {
+                    "addressLine1": "A 108, Lake Front",
+                    "addressLine2": "Central London",
+                    "cityCode": "LONDON",
+                    "stateCode": "LONDON",
+                    "countryCode": "UK"
+                }
+            },
+            "education": [
+                {
+                    "class": "7TH_CLASS",
+                    "school": "CHAITANYA_SCHOOL",
+                    "year": 2010,
+                    "grade": "A"
+                },
+                {
+                    "class": "8TH_CLASS",
+                    "school": "CHAITANYA_SCHOOL",
+                    "year": 2011,
+                    "grade": "B"
+                },
+                {
+                    "class": "9TH_CLASS",
+                    "school": "DPS_SCHOOL",
+                    "year": 2011,
+                    "grade": "C"
+                }
+            ]
+        }
+    ],
+    "DOMAIN": [
+        {
+            "categoryCode": "GENDER",
+            "code": "MALE",
+            "value": "Male",
+            "parentCode": ""
         },
         {
-          "class": "8TH_CLASS",
-          "school": "CHAITANYA_SCHOOL",
-          "year": 2011,
-          "grade": "B"
+            "categoryCode": "GENDER",
+            "code": "FEMALE",
+            "value": "Female",
+            "parentCode": ""
         },
         {
-          "class": "9TH_CLASS",
-          "school": "DPS_SCHOOL",
-          "year": 2011,
-          "grade": "C"
+            "categoryCode": "GENDER",
+            "code": "OTHER",
+            "value": "Other",
+            "parentCode": ""
+        },
+        {
+            "categoryCode": "COUNTRY",
+            "code": "INDIA",
+            "value": "India",
+            "parentCode": ""
+        },
+        {
+            "categoryCode": "COUNTRY",
+            "code": "USA",
+            "value": "America",
+            "parentCode": ""
+        },
+        {
+            "categoryCode": "COUNTRY",
+            "code": "AUSTRALIA",
+            "value": "Australia",
+            "parentCode": ""
+        },
+        {
+            "categoryCode": "STATE",
+            "code": "MAHARASHTRA",
+            "value": "Maharashtra",
+            "parentCode": "INDIA"
+        },
+        {
+            "categoryCode": "STATE",
+            "code": "TELENGANA",
+            "value": "Telengana",
+            "parentCode": "INDIA"
+        },
+        {
+            "categoryCode": "STATE",
+            "code": "KARNATAKA",
+            "value": "Karnataka",
+            "parentCode": "INDIA"
+        },
+        {
+            "categoryCode": "STATE",
+            "code": "NEW_YORK",
+            "value": "New York",
+            "parentCode": "USA"
+        },
+        {
+            "categoryCode": "STATE",
+            "code": "PENNSYLVANIA",
+            "value": "Pennsylvania",
+            "parentCode": "USA"
+        },
+        {
+            "categoryCode": "STATE",
+            "code": "CALIFORNIA",
+            "value": "California",
+            "parentCode": "USA"
+        },
+        {
+            "categoryCode": "CITY",
+            "code": "HYDERABAD",
+            "value": "Hyderabad",
+            "parentCode": "TELENGANA"
+        },
+        {
+            "categoryCode": "CITY",
+            "code": "PUNE",
+            "value": "Pune",
+            "parentCode": "MAHARASHTRA"
+        },
+        {
+            "categoryCode": "CITY",
+            "code": "MUMBAI",
+            "value": "Mumbai",
+            "parentCode": "MAHARASHTRA"
+        },
+        {
+            "categoryCode": "CITY",
+            "code": "NAVE_MUMBAI",
+            "value": "Nave Mumbai",
+            "parentCode": "MAHARASHTRA"
+        },
+        {
+            "categoryCode": "CITY",
+            "code": "BANGALORE",
+            "value": "Bangalore",
+            "parentCode": "KARNATAKA"
+        },
+        {
+            "categoryCode": "CITY",
+            "code": "NEW_YORK",
+            "value": "New York",
+            "parentCode": "NEW_YORK"
+        },
+        {
+            "categoryCode": "CITY",
+            "code": "LOS_ANGLES",
+            "value": "Los Angles",
+            "parentCode": "CALIFORNIA"
+        },
+        {
+            "categoryCode": "CITY",
+            "code": "CALIFORNIA",
+            "value": "California",
+            "parentCode": "CALIFORNIA"
         }
-      ]
-    }
-  ],
-  "DOMAIN": [
-    {
-      "categoryCode": "GENDER",
-      "code": "MALE",
-      "value": "Male",
-      "parentCode": ""
-    },
-    {
-      "categoryCode": "GENDER",
-      "code": "FEMALE",
-      "value": "Female",
-      "parentCode": ""
-    },
-    {
-      "categoryCode": "GENDER",
-      "code": "OTHER",
-      "value": "Other",
-      "parentCode": ""
-    },
-    {
-      "categoryCode": "COUNTRY",
-      "code": "INDIA",
-      "value": "India",
-      "parentCode": ""
-    },
-    {
-      "categoryCode": "COUNTRY",
-      "code": "USA",
-      "value": "America",
-      "parentCode": ""
-    },
-    {
-      "categoryCode": "COUNTRY",
-      "code": "AUSTRALIA",
-      "value": "Australia",
-      "parentCode": ""
-    },
-    {
-      "categoryCode": "STATE",
-      "code": "MAHARASHTRA",
-      "value": "Maharashtra",
-      "parentCode": "INDIA"
-    },
-    {
-      "categoryCode": "STATE",
-      "code": "TELENGANA",
-      "value": "Telengana",
-      "parentCode": "INDIA"
-    },
-    {
-      "categoryCode": "STATE",
-      "code": "KARNATAKA",
-      "value": "Karnataka",
-      "parentCode": "INDIA"
-    },
-    {
-      "categoryCode": "STATE",
-      "code": "NEW_YORK",
-      "value": "New York",
-      "parentCode": "USA"
-    },
-    {
-      "categoryCode": "STATE",
-      "code": "PENNSYLVANIA",
-      "value": "Pennsylvania",
-      "parentCode": "USA"
-    },
-    {
-      "categoryCode": "STATE",
-      "code": "CALIFORNIA",
-      "value": "California",
-      "parentCode": "USA"
-    },
-    {
-      "categoryCode": "CITY",
-      "code": "HYDERABAD",
-      "value": "Hyderabad",
-      "parentCode": "TELENGANA"
-    },
-    {
-      "categoryCode": "CITY",
-      "code": "PUNE",
-      "value": "Pune",
-      "parentCode": "MAHARASHTRA"
-    },
-    {
-      "categoryCode": "CITY",
-      "code": "MUMBAI",
-      "value": "Mumbai",
-      "parentCode": "MAHARASHTRA"
-    },
-    {
-      "categoryCode": "CITY",
-      "code": "NAVE_MUMBAI",
-      "value": "Nave Mumbai",
-      "parentCode": "MAHARASHTRA"
-    },
-    {
-      "categoryCode": "CITY",
-      "code": "BANGALORE",
-      "value": "Bangalore",
-      "parentCode": "KARNATAKA"
-    },
-    {
-      "categoryCode": "CITY",
-      "code": "NEW_YORK",
-      "value": "New York",
-      "parentCode": "NEW_YORK"
-    },
-    {
-      "categoryCode": "CITY",
-      "code": "LOS_ANGLES",
-      "value": "Los Angles",
-      "parentCode": "CALIFORNIA"
-    },
-    {
-      "categoryCode": "CITY",
-      "code": "CALIFORNIA",
-      "value": "California",
-      "parentCode": "CALIFORNIA"
-    }
-  ]
+    ]
 }

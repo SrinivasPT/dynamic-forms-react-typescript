@@ -1,25 +1,29 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect } from 'react';
 import { SmartContext } from '../Core/SmartContext';
 import { getControlValueFromState } from '../Core/SmartFunctions';
-import { SimpleFormControlArguments, State } from '../Core/SmartTypes';
-import { filter, getSearchCriteriaShape, gridInSearchMode } from '../Service/GridService';
+import { GridInternalData, SimpleFormControlArguments, State } from '../Core/SmartTypes';
+import { getGridInitialState } from '../Service/GridService';
+import PaginationControl from './PaginationControl';
 
 const TableControl = (args: SimpleFormControlArguments) => {
-    const { state } = useContext(SmartContext);
+    const { state, dispatch } = useContext(SmartContext);
     const { control, dataKey } = args;
-    let data = getControlValueFromState(args.dataKey, state as State);
-    const [filteredData, setFilteredData] = useState([...data]);
-    const [searchCriteria, setSearchCriteria] = useState(getSearchCriteriaShape(control));
-    let newFilteredData = filteredData;
+    const originalData = getControlValueFromState(args.dataKey, state as State);
 
-    const handleChange = (id: string, value: string) => {
-        const newSearchCriteria = { ...searchCriteria, [id]: value };
-        setSearchCriteria(newSearchCriteria);
-        if (gridInSearchMode(newSearchCriteria)) setFilteredData(filter([...data], newSearchCriteria));
-        else {
-            newFilteredData = [...data];
-            setFilteredData(newFilteredData);
-        }
+    useEffect(() => {
+        if (!state?.internal.gridState?.find((grid) => grid.id === control.id))
+            dispatch({ type: 'GRID_INTERNAL_STATE_INIT', payload: { control, originalData } });
+    }, []);
+
+    let gridState = state?.internal.gridState.find((grid) => grid.id === control.id) as GridInternalData;
+    gridState = gridState ? gridState : getGridInitialState(control.id, originalData, control.props.gridOptions.pageSize);
+
+    const handleSearchCriteriaChange = (id: string, value: string) => {
+        dispatch({ type: 'TABLE_SEARCH_CRITERIA_VALUE_CHANGE', payload: { tableName: control.id, id, value, originalData, control } });
+    };
+
+    const handlePageChange = (pageNumber: number) => {
+        dispatch({ type: 'GRID_PAGE_CHANGE', payload: { pageNumber, control } });
     };
 
     const getHeader = () => {
@@ -38,7 +42,7 @@ const TableControl = (args: SimpleFormControlArguments) => {
                             <input
                                 id={column.id}
                                 className='border border-1 col-12'
-                                onChange={(event) => handleChange(column.id, event.target.value)}
+                                onChange={(event) => handleSearchCriteriaChange(column.id, event.target.value)}
                             />
                         </th>
                     ))}
@@ -50,7 +54,7 @@ const TableControl = (args: SimpleFormControlArguments) => {
     const getBody = () => {
         return (
             <tbody>
-                {newFilteredData.map((row: any, rowIndex: number) => (
+                {gridState.pageData.map((row: any, rowIndex: number) => (
                     <tr key={dataKey + rowIndex}>
                         {control['props']['gridOptions']['columnDefs'].map((column, colIndex) => (
                             <td key={dataKey + rowIndex + colIndex}>{row[column.id]}</td>
@@ -62,10 +66,17 @@ const TableControl = (args: SimpleFormControlArguments) => {
     };
 
     return (
-        <table className='table table-sm table-bordered border-muted table-hover'>
-            {getHeader()}
-            {getBody()}
-        </table>
+        <>
+            <table className='table table-sm table-bordered border-muted table-hover'>
+                {getHeader()}
+                {getBody()}
+            </table>
+            <PaginationControl
+                data={gridState.filteredData}
+                pageSize={control?.props?.gridOptions.pageSize}
+                onPageChange={handlePageChange}
+            />
+        </>
     );
 };
 

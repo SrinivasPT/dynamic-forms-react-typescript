@@ -1,3 +1,4 @@
+import { filter, getGridInitialState, getPageData, gridInSearchMode } from '../Service/GridService';
 import { DispatchEvent, ObjectWithKeys, State } from './SmartTypes';
 
 const smartReducer = (state: State, action: DispatchEvent) => {
@@ -24,16 +25,41 @@ const smartReducer = (state: State, action: DispatchEvent) => {
             }
             break;
 
-        // case 'TABLE_SEARCH_CRITERIA_VALUE_CHANGE':
-        //     const searchCriteriaNode: ObjectWithKeys = state.internal.tableSearchCriteria;
-        //     const tableNode: ObjectWithKeys = searchCriteriaNode[action.payload.tableName] as ObjectWithKeys;
-        //     tableNode[action.payload.id] = action.payload.value;
-        //     break;
+        case 'GRID_INTERNAL_STATE_INIT':
+            state.internal.gridState.push(
+                getGridInitialState(
+                    action.payload.control.id,
+                    action.payload.originalData,
+                    action.payload.control.props.gridOptions.pageSize
+                )
+            );
+            break;
 
-        // case 'TABLE_ORIGINAL_DATA_SET':
-        //     const tableOriginalDataNode: ObjectWithKeys = state.internal.tableOriginalData;
-        //     tableOriginalDataNode[action.payload.tableName] = action.payload.data;
-        //     break;
+        case 'TABLE_SEARCH_CRITERIA_VALUE_CHANGE':
+            {
+                const gridIndex = state.internal?.gridState?.findIndex((grid) => grid.id === action.payload.control.id);
+                const gridState = state.internal.gridState[gridIndex];
+                gridState.searchCriteria = { ...gridState?.searchCriteria, [action.payload.id]: action.payload.value };
+                gridState.filteredData = gridInSearchMode(gridState.searchCriteria)
+                    ? filter(action.payload.originalData, gridState.searchCriteria)
+                    : action.payload.originalData;
+                gridState.pageData = getPageData(1, action.payload.control.props.gridOptions.pageSize, gridState.filteredData);
+                state.internal.gridState[gridIndex] = gridState;
+            }
+            break;
+
+        case 'GRID_PAGE_CHANGE':
+            {
+                const gridIndex = state.internal?.gridState?.findIndex((grid) => grid.id === action.payload.control.id);
+                const gridState = state.internal.gridState[gridIndex];
+                gridState.pageData = getPageData(
+                    action.payload.pageNumber,
+                    action.payload.control.props.gridOptions.pageSize,
+                    gridState.filteredData
+                );
+                state.internal.gridState[gridIndex] = gridState;
+            }
+            break;
 
         default:
             throw new Error();
